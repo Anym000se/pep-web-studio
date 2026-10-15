@@ -1,0 +1,16 @@
+{
+  "name": "pep-web-studio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio and enquiry site for Pep Web Studio, Mornington Peninsula web design.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.6.1"
+  }
+}

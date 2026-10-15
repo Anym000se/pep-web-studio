@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+.env
+
+# Files kept on this computer only (never uploaded)
+private/

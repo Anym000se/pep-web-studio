@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<Base title={`Thanks! | ${site.name}`}>
+  <section class="simple">
+    <div class="wrap">
+      <div class="big">ta<i>!</i></div>
+      <h1>Got it, thanks.</h1>
+      <p>
+        I'll take a look and get back to you within two business days, usually sooner. If it's urgent, call me on
+        <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>.
+      </p>
+      <a class="btn btn-ink" href={url()}>Back to the homepage</a>
+    </div>
+  </section>
+</Base>

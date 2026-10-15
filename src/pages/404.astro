@@ -1,0 +1,16 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<Base title={`Page not found | ${site.name}`}>
+  <section class="simple">
+    <div class="wrap">
+      <div class="big">4<i>0</i>4</div>
+      <h1>This page has gone walkabout.</h1>
+      <p>It might have moved, or the link might be old. (If your own website does this, I can help with that.)</p>
+      <a class="btn btn-ink" href={url()}>Back to the homepage</a>
+    </div>
+  </section>
+</Base>

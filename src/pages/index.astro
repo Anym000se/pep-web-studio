@@ -1,0 +1,270 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, work, services, carePlan, steps, faqs } from "../data/site";
+import { url } from "../lib/url";
+
+const shownWork = work.filter((w) => w.show);
+const thanksUrl = new URL(url("thanks/"), Astro.site).href;
+---
+
+<Base>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Mornington Peninsula web design</span>
+        <h1>Websites with a bit of <em>pep</em>.</h1>
+        <p class="lead">
+          I design, build and look after websites for local businesses (cafés, clinics, trades and shops)
+          from Frankston to Portsea. Fixed prices, no jargon, and you can update it yourself.
+        </p>
+        <div class="actions">
+          <a class="btn btn-pep" href="#check">Get a free website check</a>
+          <a class="btn btn-ghost" href="#work">See my work</a>
+        </div>
+        <p class="reassure">Free and no obligation. You'll get a plain-English reply, not a sales pitch.</p>
+      </div>
+
+      <div class="report" role="img" aria-label="Example of a free website check showing two things working and three to fix">
+        <div class="report-top">
+          <div>
+            <b>Website check</b><br />
+            <small>yourbusiness.com.au</small>
+          </div>
+          <small>Example</small>
+        </div>
+        <ul>
+          <li><span class="mark bad">✕</span><div>Works on phones<span>Text is tiny and buttons are hard to tap</span></div></li>
+          <li><span class="mark ok">✓</span><div>Secure connection<span>No "Not secure" warning</span></div></li>
+          <li><span class="mark bad">✕</span><div>Looks up to date<span>Footer still says © 2018</span></div></li>
+          <li><span class="mark ok">✓</span><div>Loads quickly<span>Under 2 seconds</span></div></li>
+          <li><span class="mark bad">✕</span><div>Looks good on Google<span>Search shows leftover template text</span></div></li>
+        </ul>
+        <div class="report-foot">3 quick wins found, all fixable in a few days.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust strip -->
+  <section class="strip" aria-label="Why work with me">
+    <div class="wrap">
+      <ul>
+        <li>Local to the peninsula</li>
+        <li>Fixed, upfront prices</li>
+        <li>You own your website</li>
+        <li>Update it yourself</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Recent work</span>
+        <h2>Made for real local businesses</h2>
+        <p class="lead">Every site is designed around the business, not squeezed into a template.</p>
+      </div>
+      <div class="work-grid">
+        {shownWork.map((w) => (
+          <article class="work-card">
+            <div class="browser">
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+              <img src={url(w.image)} alt={`${w.name} website homepage`} width="1440" height="720" loading="lazy" decoding="async" />
+            </div>
+            <div>
+              <div class="work-meta">{w.kind} · {w.place}</div>
+              <h3>{w.name}</h3>
+              <p>{w.summary}</p>
+              <ul class="ticks">
+                {w.points.map((p) => <li>{p}</li>)}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services & prices -->
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What I do</span>
+        <h2>Simple packages, honest prices</h2>
+        <p class="lead">Starting prices so you know where you stand. You'll always get a fixed quote before any work begins.</p>
+      </div>
+      <div class="price-grid">
+        {services.map((s) => (
+          <div class:list={["price", { featured: s.featured }]}>
+            {s.featured && <span class="tag">Most popular</span>}
+            <h3>{s.name}</h3>
+            <div class="amount">{s.price}</div>
+            <p>{s.blurb}</p>
+            <ul class="ticks">
+              {s.items.map((i) => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="care">
+        <div>
+          <h3>Care plan</h3>
+          <div class="amount">{carePlan.price}</div>
+        </div>
+        <ul>
+          {carePlan.items.map((i) => <li>{i}</li>)}
+        </ul>
+        <a class="btn btn-pep" href="#check">Ask about it</a>
+      </div>
+      <p class="note">No lock-in contracts. Your domain stays in your name.</p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2>From "hmm" to live in four steps</h2>
+      </div>
+      <ol class="steps">
+        {steps.map((s) => (
+          <li>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">About</span>
+        <h2>A local web designer who's easy to deal with</h2>
+        <p class="lead">
+          I'm based on the Mornington Peninsula and work with small businesses that want a website that
+          looks great, works properly and doesn't need a manual. You deal with me directly, from first chat to launch day and beyond.
+        </p>
+      </div>
+      <div class="about-list">
+        <div class="about-item"><div class="ico" aria-hidden="true">☕</div><div><b>Happy to meet in person</b><p>Anywhere on the peninsula, over a coffee or at your shop.</p></div></div>
+        <div class="about-item"><div class="ico" aria-hidden="true">💬</div><div><b>Plain English, always</b><p>No jargon and no confusing tech talk. Just clear answers.</p></div></div>
+        <div class="about-item"><div class="ico" aria-hidden="true">🔑</div><div><b>You own everything</b><p>Domain, website and content are yours, not rented from me.</p></div></div>
+        <div class="about-item"><div class="ico" aria-hidden="true">⚡</div><div><b>Built fast, kept fast</b><p>Modern, lightweight sites that load quickly on any phone.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free check / contact -->
+  <section class="section check" id="check">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Free website check</span>
+        <h2 style="margin: 14px 0 16px">Is your website helping or hurting?</h2>
+        <p class="lead">
+          Send me your web address and I'll look it over by hand. You'll get a short list of what's working,
+          what isn't, and what I'd fix first. It's yours to keep, whether or not we work together.
+        </p>
+        <ul class="check-points">
+          <li>How it looks and works on phones</li>
+          <li>Security warnings and broken pages</li>
+          <li>How you show up on Google</li>
+          <li>Outdated details customers might notice</li>
+        </ul>
+        <div class="contact-direct">
+          <span>Prefer to talk?</span>
+          <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+        </div>
+      </div>
+
+      <!-- Sent by Web3Forms (see formKey in src/data/site.ts). Without JavaScript the
+           form still posts and Web3Forms shows its own thank-you page. -->
+      <form class="card" id="check-form" method="POST" action="https://api.web3forms.com/submit" data-thanks={thanksUrl}>
+        <input type="hidden" name="access_key" value={site.formKey} />
+        <input type="hidden" name="subject" value="New free website check request" />
+        <input type="hidden" name="from_name" value={site.name} />
+        <input type="hidden" name="redirect" value={thanksUrl} />
+        <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        {import.meta.env.DEV && !site.formKey && (
+          <p class="fine" style="color:#b0174e;font-weight:700">Form not connected yet: add your Web3Forms key in src/data/site.ts (only you can see this note).</p>
+        )}
+        <div class="two">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-business">Business name</label>
+            <input id="f-business" name="business" autocomplete="organization" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-site">Website address <small>(or "I don't have one")</small></label>
+          <input id="f-site" name="website" placeholder="yourbusiness.com.au" />
+        </div>
+        <div class="two">
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <small>(optional)</small></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-msg">Anything else? <small>(optional)</small></label>
+          <textarea id="f-msg" name="message" placeholder="e.g. We want online bookings, or our site is just old"></textarea>
+        </div>
+        <button class="btn btn-pep" type="submit">Send me my free check</button>
+        <p class="fine" id="form-status" role="status">I'll only use your details to reply to you. No mailing lists.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Good questions, straight answers</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const form = document.getElementById("check-form") as HTMLFormElement | null;
+  const status = document.getElementById("form-status");
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = form.querySelector("button");
+    if (button) { button.disabled = true; button.textContent = "Sending..."; }
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      window.location.href = form.dataset.thanks ?? "thanks/";
+    } catch {
+      if (status) status.textContent = "Sorry, that didn't send. Please try again, or email or call me instead.";
+      if (button) { button.disabled = false; button.textContent = "Send me my free check"; }
+    }
+  });
+</script>

@@ -1,0 +1,90 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+import { url } from "../lib/url";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = `${site.name} | Websites for Mornington Peninsula businesses`,
+  description = "Fast, good-looking websites for local businesses on the Mornington Peninsula. Fixed prices, plain English, and you can update it yourself. Free website check.",
+} = Astro.props;
+const year = new Date().getFullYear();
+const canonical = new URL(Astro.url.pathname.replace(/\/?$/, "/"), Astro.site);
+const home = new URL(url(), Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={url("favicon.svg")} type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#fbf7f1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: site.name,
+      url: home,
+      telephone: site.phone,
+      ...(site.email && { email: site.email }),
+      areaServed: "Mornington Peninsula, Victoria, Australia",
+      description,
+    })} />
+  </head>
+  <body>
+    <header class="site-head" id="top">
+      <div class="wrap">
+        <a class="logo" href={url()} aria-label={`${site.name} home`}>
+          <b>pep<i>.</i></b><span>web studio</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href={url("#work")}>Work</a>
+          <a href={url("#services")}>Prices</a>
+          <a href={url("#how")}>How it works</a>
+          <a href={url("#faq")}>FAQ</a>
+          <a class="btn btn-ink" href={url("#check")}>Free website check</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-foot">
+      <div class="wrap">
+        <div>
+          © {year} {site.name} · {site.area}{site.abn && ` · ABN ${site.abn}`}
+        </div>
+        <nav aria-label="Footer">
+          <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+          {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+          <a href="#top">Back to top ↑</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      const head = document.querySelector(".site-head");
+      const onScroll = () => head?.classList.toggle("scrolled", window.scrollY > 8);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    </script>
+  </body>
+</html>
