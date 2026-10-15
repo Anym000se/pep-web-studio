@@ -32,6 +32,21 @@ export const work = [
       "Enquiry form that emails the workshop straight away",
     ],
   },
+  {
+    show: true,
+    name: "Furrical Blessing",
+    place: "Handmade costume studio",
+    kind: "Commissions website",
+    image: "work/furrical.webp",
+    summary:
+      "A single-page site styled from the studio's own price-sheet artwork, so it feels like it was always part of the brand.",
+    points: [
+      "Prices, gallery, queue and FAQ on one page",
+      "Quote request form",
+      "Simple editing panel for prices and photos",
+      "Light and dark mode",
+    ],
+  },
 ];
 
 export const services = [
