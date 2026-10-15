@@ -22,13 +22,13 @@ CONNECT THE "FREE WEBSITE CHECK" FORM (free, takes 2 minutes)
 PUT IT ONLINE WITH GITHUB PAGES (free)
   1. Create a new repository on github.com called  pep-web-studio
      (GitHub Pages needs it to be Public on a free account.)
-  2. In astro.config.mjs, replace YOUR-GITHUB-NAME with your GitHub username.
+  2. Your GitHub username (anym000se) is already set in astro.config.mjs.
   3. Upload this folder to the repository (GitHub Desktop is the easiest way).
      node_modules and dist are skipped automatically.
   4. On GitHub: Settings > Pages > under "Source" choose  GitHub Actions
   5. Every time you push changes, the site rebuilds by itself (about a minute).
      Watch it in the "Actions" tab. Your site will be at:
-       https://YOUR-GITHUB-NAME.github.io/pep-web-studio/
+       https://anym000se.github.io/pep-web-studio/
 
 USING YOUR OWN DOMAIN LATER (e.g. pepweb.com.au)
   1. In astro.config.mjs set  SITE = "https://pepweb.com.au"  and  BASE = "/"
