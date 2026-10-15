@@ -2,7 +2,7 @@ PEP WEB STUDIO - YOUR PORTFOLIO SITE
 ====================================
 
 PREVIEW IT
-  Double-click "Preview Website.bat". It opens http://localhost:4321/pep-web-studio/
+  Double-click "Preview Website.bat". It opens http://localhost:4321/
   Changes you save show up straight away.
 
 CHANGE YOUR DETAILS, PRICES, WORK OR FAQS
@@ -27,10 +27,15 @@ PUT IT ONLINE WITH GITHUB PAGES (free)
      node_modules and dist are skipped automatically.
   4. On GitHub: Settings > Pages > under "Source" choose  GitHub Actions
   5. Every time you push changes, the site rebuilds by itself (about a minute).
-     Watch it in the "Actions" tab. Your site will be at:
-       https://anym000se.github.io/pep-web-studio/
+     Watch it in the "Actions" tab. Your site is at:
+       https://pepwebstudio.com
 
-USING YOUR OWN DOMAIN LATER (e.g. pepweb.com.au)
+YOUR DOMAIN (pepwebstudio.com, bought through Cloudflare)
+  Already set up: SITE/BASE in astro.config.mjs and public\CNAME.
+  DNS lives in Cloudflare: 4 A records (@ -> 185.199.108-111.153) and
+  CNAME www -> anym000se.github.io, all set to "DNS only".
+
+IF YOU EVER CHANGE DOMAIN
   1. In astro.config.mjs set  SITE = "https://pepweb.com.au"  and  BASE = "/"
   2. Create a file  public\CNAME  containing just:  pepweb.com.au
   3. On GitHub: Settings > Pages > Custom domain > enter it, tick "Enforce HTTPS".

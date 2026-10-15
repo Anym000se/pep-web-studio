@@ -12,8 +12,8 @@ import { defineConfig } from "astro/config";
 //    BASE = "/"
 //    ...and create a file public/CNAME containing just: pepweb.com.au
 // ------------------------------------------------------------------
-const SITE = "https://anym000se.github.io";
-const BASE = "/pep-web-studio";
+const SITE = "https://pepwebstudio.com";
+const BASE = "/";
 
 export default defineConfig({
   site: SITE,
